@@ -31,11 +31,11 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
 
       # Runs ARM build from the bicep. Used for portal UI. Compile AVD baseline. 
       - name: bicep-build-output
-        uses: Azure/bicep-build-action@v1.0.0
+        uses: Azure/bicep-build-action@c333f970fb0daae2241062b5b7acf30a97f696c9 # v1.0.0
         with:
           bicepFilePath: ./workload/bicep/deploy-baseline.bicep
           outputFilePath: ./workload/arm/deploy-baseline.json
@@ -53,7 +53,7 @@ jobs:
 
       # Runs ARM build from the bicep. Used for portal UI. Compile AVD Custom image. 
       - name: bicep-build-output
-        uses: Azure/bicep-build-action@v1.0.0
+        uses: Azure/bicep-build-action@c333f970fb0daae2241062b5b7acf30a97f696c9 # v1.0.0
         with:
           bicepFilePath: ./workload/bicep/deploy-custom-image.bicep
           outputFilePath: ./workload/arm/deploy-custom-image.json
@@ -71,9 +71,7 @@ jobs:
           
       # Publish the compiled ARM templates to Github
       - name: publish
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@3ea6ae190baf489ba007f7c92608f33ce20ef04a # v4
         with: 
           commit_message: Automated update for ARM templates
           
-
-
